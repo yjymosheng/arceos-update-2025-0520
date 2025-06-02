@@ -34,7 +34,7 @@ jobs:
         toolchain: ${{ env.rust-toolchain }}
         components: rust-src
     - uses: Swatinem/rust-cache@v2
-      with
+      with:
         cache-target: false
     - run: cargo install cargo-binutils
     - uses: ./.github/workflows/actions/setup-qemu
