@@ -83,7 +83,7 @@ pub fn flush_tlb(vaddr: Option<VirtAddr>) {
 /// Writes Supervisor Trap Vector Base Address Register (`stvec`).
 #[inline]
 pub fn set_trap_vector_base(stvec: usize) {
-     let mut reg = stvec::read();
+    let mut reg = stvec::read();
     reg.set_address(stvec);
     reg.set_trap_mode(stvec::TrapMode::Direct);
     unsafe { stvec::write(reg) }

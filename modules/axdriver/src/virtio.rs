@@ -82,6 +82,7 @@ impl<D: VirtIoDevMeta> DriverProbe for VirtIoDriver<D> {
         let base_vaddr = phys_to_virt(mmio_base.into());
         if let Some((ty, transport)) =
             axdriver_virtio::probe_mmio_device(base_vaddr.as_mut_ptr(), mmio_size)
+            && ty == D::DEVICE_TYPE
         {
             match D::try_new(transport) {
                 Ok(dev) => return Some(dev),

@@ -116,7 +116,7 @@ unsafe fn init_boot_page_table() {
 #[unsafe(no_mangle)]
 #[unsafe(link_section = ".text.boot")]
 unsafe extern "C" fn _start() -> ! {
-    // PC = bootloader load addressAdd commentMore actions
+    // PC = bootloader load address
     // X0 = dtb
     core::arch::naked_asm!("
         add     x13, x18, #0x16     // 'MZ' magic
@@ -139,7 +139,7 @@ unsafe extern "C" fn _start() -> ! {
 #[unsafe(naked)]
 #[unsafe(link_section = ".text.boot")]
 unsafe extern "C" fn _start_primary() -> ! {
-    // X0 = dtbAdd commentMore actions
+    // X0 = dtb
     core::arch::naked_asm!("
         mrs     x19, mpidr_el1
         and     x19, x19, #0xffffff     // get current CPU id
@@ -179,7 +179,7 @@ unsafe extern "C" fn _start_primary() -> ! {
 #[unsafe(no_mangle)]
 #[unsafe(link_section = ".text.boot")]
 unsafe extern "C" fn _start_secondary() -> ! {
-    core::arch::naked_asm!("Add commentMore actions
+    core::arch::naked_asm!("
         mrs     x19, mpidr_el1
         and     x19, x19, #0xffffff     // get current CPU id
 

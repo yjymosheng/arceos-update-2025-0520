@@ -10,7 +10,7 @@ fn main() {
             .derive_default(true)
             .size_t_is_usize(false)
             .use_core();
-        if let Some(llvm_target) = target.strip_suffix("-softfloat") {Add commentMore actions
+        if let Some(llvm_target) = target.strip_suffix("-softfloat") {
             // remove "-softfloat" suffix for some targets
             builder = builder.clang_arg(format!("--target={llvm_target}"));
         }

@@ -21,7 +21,7 @@ jobs:
         targets: x86_64-unknown-none, riscv64gc-unknown-none-elf, aarch64-unknown-none-softfloat, loongarch64-unknown-none-softfloat
     - uses: Swatinem/rust-cache@v2
       with:
-        cache-target: false
+        cache-targets: false
     - name: Check rust version
       run: rustc --version --verbose
     - uses: ./.github/workflows/actions/setup-musl
@@ -67,7 +67,7 @@ jobs:
         targets: x86_64-unknown-none, riscv64gc-unknown-none-elf, aarch64-unknown-none-softfloat, loongarch64-unknown-none-softfloat
     - uses: Swatinem/rust-cache@v2
       with:
-        cache-target: false
+        cache-targets: false
     - run: cargo install cargo-binutils
     - name: Build helloworld
       continue-on-error: ${{ matrix.rust-toolchain == 'nightly' }}
@@ -111,7 +111,7 @@ jobs:
         targets: x86_64-unknown-none, riscv64gc-unknown-none-elf, aarch64-unknown-none-softfloat, loongarch64-unknown-none-softfloat
     - uses: Swatinem/rust-cache@v2
       with:
-        cache-target: false
+        cache-targets: false
     - run: cargo install cargo-binutils
     - name: Build helloworld for x86_64-pc-oslab
       continue-on-error: ${{ matrix.rust-toolchain == 'nightly' }}
@@ -157,4 +157,3 @@ jobs:
     - name: Build httpserver-c for x86_64-pc-oslab
       continue-on-error: ${{ matrix.rust-toolchain == 'nightly' }}
       run: make PLATFORM=x86_64-pc-oslab A=examples/httpserver-c FEATURES=page-alloc-4g,driver-ixgbe
-
